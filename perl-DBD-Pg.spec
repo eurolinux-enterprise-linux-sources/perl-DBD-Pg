@@ -1,12 +1,15 @@
 Name:           perl-DBD-Pg
 Version:        2.15.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        A PostgreSQL interface for perl
 
 Group:          Development/Libraries
 License:        GPL+ or Artistic
 URL:            http://search.cpan.org/dist/DBD-Pg/
 Source0:        http://search.cpan.org/CPAN/authors/id/T/TU/TURNSTEP/DBD-Pg-%{version}.tar.gz
+# Patch for BZ#841131, https://rt.cpan.org/Public/Bug/Display.html?id=75642
+Patch0:         0001-Explicitly-warn-and-croak-with-controlled-format-str.patch
+
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 # Prevent bug #443495
@@ -25,6 +28,7 @@ An implementation of DBI for PostgreSQL for Perl.
 
 %prep
 %setup -q -n DBD-Pg-%{version}
+%patch0 -p1
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="$RPM_OPT_FLAGS"
@@ -60,6 +64,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Jul 18 2012 Jitka Plesnikova <jplesnik@redhat.com> - 2.15.1-4
+- Resolves: rhbz#841131 (CVE-2012-1151)
+
 * Wed Jan 27 2010 Stepan Kasal <skasal@redhat.com> - 2.15.1-3
 - drop patch that was upstreamed long ago (<=2.8.7)
 
