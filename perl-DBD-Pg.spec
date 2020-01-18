@@ -1,7 +1,7 @@
 Name:           perl-DBD-Pg
 Summary:        A PostgreSQL interface for perl
 Version:        2.19.3
-Release:        2%{?dist}
+Release:        4%{?dist}
 License:        GPLv2+ or Artistic
 Group:          Development/Libraries
 Source0:        http://search.cpan.org/CPAN/authors/id/T/TU/TURNSTEP/DBD-Pg-%{version}.tar.gz 
@@ -87,6 +87,12 @@ make test
 
 
 %changelog
+* Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 2.19.3-4
+- Mass rebuild 2014-01-24
+
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 2.19.3-3
+- Mass rebuild 2013-12-27
+
 * Wed Aug 22 2012 Petr Pisar <ppisar@redhat.com> - 2.19.3-2
 - Specify all dependencies
 - Move testme.tmp.pl to tests sub-package
